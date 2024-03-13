@@ -5,11 +5,10 @@ import ProjetoECommerce.model.ECom;
 
 public interface EcomRepository {
 
-	public void procurarPorNome(String nome);
-	public void procurarPorPlataforma(String plataforma);
+	public void procurarPorCodigo(int codigo);
 	public void listarTodos();
-	public void cadastrar(ECom BackLog);
-	public void atualizar(ECom BackLog);
-	public void deletar(String nome);
+	public void cadastrar(ECom Ecom);
+	public void atualizar(ECom ECom);
+	public void deletar(int codigo);
 	
 }

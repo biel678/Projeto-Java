@@ -3,20 +3,18 @@ package ProjetoECommerce;
 import java.io.IOException;
 import java.util.Scanner;
 
+import ProjetoECommerce.controller.EComController;
 import ProjetoECommerce.model.BackLog;
 
 public class MenuECom {
 	public static void main(String[] args) {
-		
-		/*String nome, plataforma, genero;
-		int ano, tempo;
-		float preco;
-		*/
-		BackLog tt = new BackLog("jogo", 2020, "terror", "pc", 20, 10.0f);
-		tt.visualizar();
-		
+		EComController log = new EComController();
 		Scanner scan = new Scanner(System.in);
-		
+
+		String nome, plataforma, genero;
+		int ano, tempo, codigo = 0;
+		float preco;
+
 		boolean check = true;
 		while (check == true) {
 			chamarMenu();
@@ -24,29 +22,75 @@ public class MenuECom {
 
 			switch (opcao) {
 			case 1:
-				System.out.println("Digite o nome do jogo: ");
-				System.out.println("Digite o ano do jogo: ");
-				System.out.println("Digite o gênero do jogo: ");
-				System.out.println("Digite a plataforma do jogo: ");
-				System.out.println("Digite o tempo de jogatina:");
-				System.out.println("Digite o preço do jogo: ");
+				System.out.println("Criar log\n\n");
 
+				System.out.println("Digite um código para o jogo:");
+				codigo = scan.nextInt();
+				System.out.println("Digite o nome do jogo: ");
+				scan.skip("\\R?");
+				nome = scan.nextLine();
+				System.out.println("Digite o ano do jogo: ");
+				ano = scan.nextInt();
+				System.out.println("Digite o gênero do jogo: ");
+				scan.skip("\\R?");
+				genero = scan.nextLine();
+				System.out.println("Digite a plataforma do jogo: ");
+				scan.skip("\\R?");
+				plataforma = scan.nextLine();
+				System.out.println("Digite o tempo de jogatina:");
+				tempo = scan.nextInt();
+				System.out.println("Digite o preço do jogo: ");
+				preco = scan.nextFloat();
+
+				log.cadastrar(new BackLog(codigo, nome, ano, genero, plataforma, tempo, preco));
 				keyPress();
 				break;
 			case 2:
-				// listar
+				log.listarTodos();
 				keyPress();
 				break;
 			case 3:
-				// buscar
+				scan.skip("\\R?");
+				System.out.println(" Digite o nome do jogo que quer procurar: ");
+				codigo = scan.nextInt();
+
+				log.procurarPorCodigo(codigo);
+
 				keyPress();
 				break;
 			case 4:
-				// apagar
+				System.out.println("Digite o código do log que quer deletar: ");
+				
+				log.deletar(codigo);
+				
 				keyPress();
 				break;
 			case 5:
-				// atualizar
+				System.out.println("Digite o código do log que deseja alterar: ");
+				codigo =scan.nextInt();
+				
+				var buscaLog = log.buscarNaCollection(codigo);
+				
+				if(buscaLog != null) {				
+				System.out.println("Digite o nome do jogo: ");
+				scan.skip("\\R?");
+				nome = scan.nextLine();
+				System.out.println("Digite o ano do jogo: ");
+				ano = scan.nextInt();
+				System.out.println("Digite o gênero do jogo: ");
+				scan.skip("\\R?");
+				genero = scan.nextLine();
+				System.out.println("Digite a plataforma do jogo: ");
+				scan.skip("\\R?");
+				plataforma = scan.nextLine();
+				System.out.println("Digite o tempo de jogatina:");
+				tempo = scan.nextInt();
+				System.out.println("Digite o preço do jogo: ");
+				preco = scan.nextFloat();
+				log.atualizar(new BackLog(codigo, nome, ano, genero, plataforma, tempo, preco));
+				} else {
+					System.out.println("A conta não foi encontrada!");
+				}
 				keyPress();
 				break;
 			case 0:

@@ -1,14 +1,16 @@
 package ProjetoECommerce.model;
 
 public abstract class ECom {
+	
 	private String nome;
 	private int ano;
 	private String genero;
 	private String plataforma;
 	private int tempo;
 	private float preco;
+	private int codigo;
 	
-	public ECom (String nome,int ano, String genero,String plataforma,int tempo,float preco) {
+	public ECom (int codigo, String nome,int ano, String genero,String plataforma,int tempo,float preco) {
 		super();
 		this.nome = nome;
 		this.ano = ano;
@@ -16,6 +18,15 @@ public abstract class ECom {
 		this.plataforma = plataforma;
 		this.tempo = tempo;
 		this.preco = preco;
+		this.codigo = codigo;
+	}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getNome() {
@@ -68,7 +79,7 @@ public abstract class ECom {
 	public void visualizar() {
 		
 		System.out.println("\n\n***********************************************************");
-		System.out.println("Dados do Jogo:");
+		System.out.println("Dados do Jogo código: " + codigo);
 		System.out.println("***********************************************************");
 		System.out.println("Nome do jogo: " + this.nome);
 		System.out.println("Ano do jogo: " + this.ano);
