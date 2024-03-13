@@ -3,16 +3,25 @@ package ProjetoECommerce;
 import java.io.IOException;
 import java.util.Scanner;
 
+import ProjetoECommerce.model.BackLog;
+
 public class MenuECom {
 	public static void main(String[] args) {
+		
+		/*String nome, plataforma, genero;
+		int ano, tempo;
+		float preco;
+		*/
+		BackLog tt = new BackLog("jogo", 2020, "terror", "pc", 20, 10.0f);
+		tt.visualizar();
+		
 		Scanner scan = new Scanner(System.in);
-
+		
 		boolean check = true;
-
 		while (check == true) {
 			chamarMenu();
 			int opcao = scan.nextInt();
-			
+
 			switch (opcao) {
 			case 1:
 				System.out.println("Digite o nome do jogo: ");
@@ -21,23 +30,23 @@ public class MenuECom {
 				System.out.println("Digite a plataforma do jogo: ");
 				System.out.println("Digite o tempo de jogatina:");
 				System.out.println("Digite o preço do jogo: ");
-				
+
 				keyPress();
 				break;
 			case 2:
-				//listar
+				// listar
 				keyPress();
 				break;
 			case 3:
-				//buscar
+				// buscar
 				keyPress();
 				break;
 			case 4:
-				//apagar
+				// apagar
 				keyPress();
 				break;
 			case 5:
-				//atualizar
+				// atualizar
 				keyPress();
 				break;
 			case 0:
@@ -58,6 +67,7 @@ public class MenuECom {
 		System.out.println("github.com/biel678/");
 		System.out.println("*********************************************************");
 	}
+
 	public static void keyPress() {
 
 		try {
@@ -70,6 +80,7 @@ public class MenuECom {
 			System.out.println("Você pressionou uma tecla diferente de enter!");
 		}
 	}
+
 	public static void chamarMenu() {
 		System.out.println("\n***************************************************");
 		System.out.println("                                                     ");
